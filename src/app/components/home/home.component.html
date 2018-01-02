@@ -1,0 +1,61 @@
+<div class="container-fluid">
+     <div class="row">
+          <div class="col"></div>
+          <div class="col-9">
+               <!-- Bucket List -->
+               <div>
+                    <div>
+                         <p class="text-center">
+                              Add a bucket list item.
+                         </p>
+                    </div>
+                    <hr>
+                    <div>
+                         <h3 class="text-center">Your Bucket List ({{ itemCount }})</h3>
+                    </div>
+               </div>
+
+               <hr>
+               <!-- Form -->
+               <div>
+                    <p class="text-center">Use the form below to add a new bucket list goal. What do you want to do with your life?</p>
+                    <form class="form-horizontal">
+                         <div class="form-group row">
+                              <label for="item" class="control-label col-sm-2 mr-0">Bucket Item:</label>
+                              <div class="col-sm-10 control ml-0">
+                                   <input type="text" class="form-control" name="item" id="item" placeholder="Life goal..." aria-label="Bucket list entry text box" [(ngModel)]="goalText">
+                              </div>
+                         </div>
+                         <div class="form-group row">
+                              <div class="col"></div>
+                              <div class="col-1">
+                                   <input type="submit" class="btn btn-primary" [value]="btnText" (click)="addItem()">
+                              </div>
+                              <div class="col"></div>
+                         </div>
+                    </form>
+               </div>
+
+               <!-- Items -->
+               <div>
+                    <ul class="list-group" [@goals]="goals.length">
+                         <li class="list-group-item" *ngFor="let goal of goals; let i = index">
+                              <div class="row">
+                                   <div class="col-sm-11">
+                                        <p class="life-container">
+                                             {{goal}}
+                                        </p>
+                                   </div>
+                                   <div class="col-sm-1">
+                                        <button type="button" class="close" aria-label="Delete Item" (click)="removeItem(i)">
+                                             <span aria-hidden="true">&times;</span>
+                                        </button>
+                                   </div>
+                              </div>
+                         </li>
+                    </ul>
+               </div>
+          </div>
+          <div class="col"></div>
+     </div>
+</div>
